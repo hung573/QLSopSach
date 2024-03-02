@@ -1,0 +1,11 @@
+﻿
+<div class="cart_details">
+    Số lượng sách: @ViewBag.Tongsoluong <br />
+    <span class="border_cart"></span> Total: <span class="price">@String.Format("{0:0,0}", ViewBag.Tongtien) VND</span>
+</div>
+<div class="cart_icon">
+    <a href="@Url.Action("GioHang","GioHang")" title="header=[Checkout] body=[&nbsp;] fade=[on]">
+        <img src="~/images/shoppingcart.png" alt="" width="48" height="48" border="0" />
+    </a>
+</div>
+

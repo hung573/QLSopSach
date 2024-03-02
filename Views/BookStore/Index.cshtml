@@ -1,0 +1,75 @@
+﻿
+@using ShopSach.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<SACH1>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layoutUser.cshtml";
+}
+
+<div class="center_title_bar">Latest Products</div>
+<div class="prod_container">
+    @foreach (var sach in Model)
+    {
+        <div class="prod_box">
+            <div class="top_prod_box"></div>
+            <div class="center_prod_box">
+                <div class="product_title"><a href="@Url.Action("details","BookStore", new {id = sach.Masach})">@sach.Tensach</a></div>
+                <div class="product_img">
+                    <a href="@Url.Action("details","BookStore", new {id = sach.Masach})">
+                        <img style="width:100px; height:100px" src="~/images/@sach.Anhbia" alt="" border="0" />
+                    </a>
+                </div>
+                <div class="prod_price"><span class="reduce">$350.00</span> <span class="price">@sach.Giaban.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span></div>
+            </div>
+            <div class="bottom_prod_box"></div>
+            <div class="prod_details_tab">
+                <a href="@Url.Action("ThemGioHang","GioHang", new {@Masach=sach.Masach,@strURL=Request.Url.ToString()})" title="header=[Add to cart] body=[&nbsp;] fade=[on]">
+                    <img src="~/images/cart.gif" alt="" border="0" class="left_bt" />
+                </a>
+                <a href="" title="header=[Specials] body=[&nbsp;] fade=[on]">
+                    <img src="~/images/favs.gif" alt="" border="0" class="left_bt" />
+                </a>
+                <a href="" title="header=[Gifts] body=[&nbsp;] fade=[on]">
+                    <img src="~/images/favorites.gif" alt="" border="0" class="left_bt" />
+                </a>
+                <a href="@Url.Action("details","BookStore", new {id = sach.Masach})" class="prod_details">details</a>
+            </div>
+        </div>
+
+    }
+</div>
+<i>Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount</i>
+<div class="pagination">
+    @Html.PagedListPager(Model, page => Url.Action("Index",new {page = page}))
+</div>
+
+<style>
+    .pagination li {
+        display: inline;
+    }
+
+    .pagination {
+
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+    }
+
+    .pagination a.active {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #4CAF50;
+    }
+</style>

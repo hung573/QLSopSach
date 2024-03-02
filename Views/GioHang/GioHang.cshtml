@@ -1,0 +1,50 @@
+﻿@using ShopSach.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_layoutUser.cshtml";
+}
+<h2 style="text-align:center">THONG TIN GIO HANG</h2>
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight:bold">
+        <td>Mã sách</td>
+        <td>Tên sách</td>
+        <td>Ảnh bìa sách</td>
+        <td>Số lương</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+        <td>Chi tiết</td>
+        <td>Xóa sản phẩm</td>
+        <td>Cập nhật</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td>@item.iMasach</td>
+            <td>@item.sTensach</td>
+            <td><img style="width:130px" src="~/images/@item.sAnhbia" /></td>
+            @using (Html.BeginForm("CapnhatGioHang", "GioHang", new { @iMaSp = item.iMasach }))
+            {
+                <td>
+                    <input type="number" min="1" name="txtSoLuong" value="@item.iSoluong" style="width:30px" />
+                </td>
+                <td>@String.Format("{0:0,0}", item.dDongia)</td>
+                <td>@String.Format("{0:0,0}", item.dThanhtien)</td>
+                <td><a href="@Url.Action("details","BookStore", new {id = item.iMasach})">Details</a></td>
+                <td>@Html.ActionLink("Delete", "Xoagiohang", new { @iMaSP = item.iMasach })</td>
+                <td><input type="submit" value="Update" /></td>
+            }
+        </tr>
+    }
+    <tr style="font-weight:bold; text-align:center; color:red">
+        <td colspan="4">Số lượng sách: @ViewBag.Tongsoluong</td>
+        <td colspan="5">Tổng tiền : @String.Format("{0:0,0}", ViewBag.Tongtien) VND</td>
+    </tr>
+    <tr style="font-weight:bold; text-align:right; color:blue">
+        <td colspan="9">@Html.ActionLink("Delete All", "XoatTatCaTrongGioHang")</td>
+    </tr>
+    <tr style="font-weight:bold; text-align:center; color:blue">
+        <td colspan="9">@Html.ActionLink("Order", "DatHang", "GioHang")</td>
+    </tr>
+</table>
+

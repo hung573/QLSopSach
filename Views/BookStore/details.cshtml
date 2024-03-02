@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "details";
+    Layout = "~/Views/Shared/_layoutUser.cshtml";
+}
+
+<div class="center_title_bar">Chi Tiết Sản Phâm</div>
+<div class="prod_box_big">
+    <div class="top_prod_box_big"></div>
+    <div class="center_prod_box_big">
+        <div class="product_img_big">
+            <a href="javascript:popImage('images/big_pic.jpg','Some Title')" title="header=[Zoom] body=[&nbsp;] fade=[on]">
+                <img style="width:150px; height:150px" src="~/images/@Model.Anhbia" alt="" border="0" />
+            </a>
+        </div>
+        <div class="details_big_box">
+            <div class="product_title_big">@Model.Tensach</div>
+            <div class="specifications">
+                Mô tả sản phẩm: <span class="blue">@Model.Mota</span><br />
+                Số lượng còn trong kho: <span class="blue">@Model.Soluongton</span><br />
+                Nhà xuất bản:<span class="blue"> @Model.MaNXB</span><br />
+            </div>
+            <div class="prod_price_big"><span class="reduce">$350.00</span> <span class="price">@Model.Giaban.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-US"))</span></div>
+            <a href="@Url.Action("ThemGioHang","GioHang", new {@Masach=@Model.Masach,@strURL=Request.Url.ToString()})" class="addtocart">add to cart</a>
+        </div>
+    </div>
+    <div class="bottom_prod_box_big"></div>
+</div>
+

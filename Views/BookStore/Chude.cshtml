@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ShopSach.Models.CHUDE>
+@{
+    var classes = new[] { "odd", "even" };
+    var index = 0;
+}
+
+@foreach (var item in Model)
+{
+
+    <li class="@classes[index]"><a href="@Url.Action("SPTheochude","BookStore",new {id = item.MaCD})">@item.Tenchude</a></li>
+    index = (index + 1) % classes.Length;
+}

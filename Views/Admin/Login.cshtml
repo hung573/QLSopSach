@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutDangNhap.cshtml";
+}
+
+<!--  Title-->
+<div class="login-title w3_title">
+    <h1>Login Admin</h1>
+</div>
+<div class="login w3_login">
+    <h2 class="login-header w3_header">Log in</h2>
+    <div class="w3l_grid">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <form class="login-container" action="@Url.Action("Index", "Admin/Index")" method="post">
+                <input type="text" placeholder="Tên đang nhập" Name="username" required="" @ViewData["Loi1"]>
+                <input type="password" placeholder="Password" Name="password" required="" @ViewData["Loi2"]>
+                <button style="color: #fff; background-color: #007bff; border-color: #007bff; text-align: center; " class=" btn-primary" type="Submit">Đang Nhập</button>
+            </form>
+        }
+        <h4> <a href="#">@ViewBag.ThongBao</a></h4>
+        <div class="second-section w3_section">
+            <div class="bottom-header w3_bottom">
+                <h3>OR</h3>
+            </div>
+            <div class="social-links w3_social">
+                <ul>
+                    <!-- facebook -->
+                    <li> <a class="facebook" href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+
+                    <!-- twitter -->
+                    <li> <a class="twitter" href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+
+                    <!-- google plus -->
+                    <li> <a class="googleplus" href="#" target="blank"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bottom-text w3_bottom_text">
+            <h4> <a href="#">Forgot your password?</a></h4>
+            <h4> <a href="@Url.Action("Index","BookStore")">Home</a></h4>
+        </div>
+
+    </div>
+</div>
+
+
+
+

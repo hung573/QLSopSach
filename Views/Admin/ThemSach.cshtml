@@ -1,0 +1,106 @@
+﻿@model ShopSach.Models.SACH1
+
+@{
+    ViewBag.Title = "ThemSach";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thêm Sách Mới</h2>
+
+@using (Html.BeginForm("ThemSach", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Tên Sản Phẩm<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            <input type="text" name="Tensanpham" class="form-control col-md-7 col-xs-12">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Giá bán<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            <input type="text" name="Giaban" class="form-control col-md-7 col-xs-12">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Mô tả<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            <textarea class="resizable_textarea form-control" name="Mota" placeholder="This text area automatically resizes its height as you fill in more text courtesy of autosize-master it out..."></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Ảnh bìa<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            <input type="file" name="fileUpLoad"/>
+            @ViewBag.ThongBao
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Số lượng tồn<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            <input type="text" name="Soluongton" class="form-control col-md-7 col-xs-12">
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Tên chủ đề<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            @Html.DropDownList("MaCD")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Tên nhà xuất bản<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            @Html.DropDownList("MaNXB")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+            Ngày cập nhật<span class="required">*</span>
+        </label>
+        <div class="col-md-5">
+            <input type="date" name="Ngaycapnhat" />
+            @Html.ValidationMessageFor(model => model.Ngaycapnhat)
+        </div>
+    </div>
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+            <button class="btn btn-primary" type="button">Cancel</button>
+            <button class="btn btn-primary" type="reset">Reset</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Sach")
+</div>

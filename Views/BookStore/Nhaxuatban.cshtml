@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ShopSach.Models.NHAXUATBAN>
+
+@{
+    var classes = new[] { "odd", "even" };
+    var index = 0;
+}
+
+@foreach (var item in Model)
+{
+
+    <li class="@classes[index]"><a href="@Url.Action("SPTheonhaxuatban","BookStore",new {id = item.MaNXB})">@item.TenNXB</a></li>
+    index = (index + 1) % classes.Length;
+}

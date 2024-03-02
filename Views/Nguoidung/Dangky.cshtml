@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Dangky";
+    Layout = "~/Views/Shared/_LayoutDangNhap.cshtml";
+}
+
+<!--  Title-->
+<div class="login-title w3_title">
+    <h1>Elegant login Form</h1>
+</div>
+<div class="login w3_login">
+    <h2 class="login-header w3_header">Log in</h2>
+    <div class="w3l_grid">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+        <form class="login-container" action="#" method="post">
+            <input type="text" placeholder="Họ và Tên" Name="HoTen" required="" @ViewData["Loi1"]>
+            <input type="text" placeholder="Tên đang nhập" Name="TaiKhoan" required="" @ViewData["Loi2"]>
+            <input type="password" placeholder="Password" Name="MatKhau" required="" @ViewData["Loi3"]>
+
+            <input type="email" placeholder="Email" Name="Email" required="" @ViewData["Loi5"]>
+            <input type="text" placeholder="Địa chỉ" Name="DiachiKH" required="" @ViewData["Loi6"]>
+            <input type="text" placeholder="Số điện thoại" Name="DienthoiKH" required="" @ViewData["Loi7"]>
+            <input type="date" placeholder="Ngày sinh" Name="Ngaysinh" required="" @ViewData["Loi8"]>
+            <button style="color: #fff; background-color: #007bff; border-color: #007bff; text-align: center; " class=" btn-primary" type="Submit">Đang Ký</button>
+
+        </form>
+        }
+        <div class="second-section w3_section">
+            <div class="bottom-header w3_bottom">
+                <h3>OR</h3>
+            </div>
+            <div class="social-links w3_social">
+                <ul>
+                    <!-- facebook -->
+                    <li> <a class="facebook" href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+
+                    <!-- twitter -->
+                    <li> <a class="twitter" href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+
+                    <!-- google plus -->
+                    <li> <a class="googleplus" href="#" target="blank"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bottom-text w3_bottom_text">
+            <p>No account yet?<a href="@Url.Action("DangNhap", "Nguoidung")">Signup</a></p>
+            <h4> <a href="#">Forgot your password?</a></h4>
+            <h4> <a href="@Url.Action("Index","BookStore")">Home</a></h4>
+        </div>
+
+    </div>
+</div>
+
